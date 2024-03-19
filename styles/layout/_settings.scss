@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "InstrumentSerif";
+  src: url(../assets/fonts/InstrumentSerif-Italic.ttf);
+}
+
+$color1: orange;
+$color2: beige;
+$color3: rgb(15, 15, 15);
+$color4: orangered;
+
+body {
+  background: $color3;
+  color: $color2;
+}

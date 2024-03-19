@@ -1,0 +1,118 @@
+header {
+  width: 100%;
+  height: 100vh;
+  background: url(../img/bg-slider-06.jpg) center/cover no-repeat;
+}
+
+nav {
+  width: 90%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  margin: 0 auto;
+  align-items: center;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  span {
+    color: $colorwhite;
+    text-align: center;
+    font-family: $fontAllura;
+
+    i {
+      margin-right: 30px;
+      color: $colorwhite;
+      &:hover {
+        transform: scale(1.2);
+      }
+      &:active {
+        transition: 0.1s ease;
+        transform: scale(1);
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+
+    li {
+      position: relative;
+      &:active {
+        transition: 0.1s ease;
+        transform: scale(1.1);
+      }
+    }
+
+    li:hover {
+      a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: $colorwhite;
+        left: 50%;
+        transform: translate(-50%, 20px);
+      }
+    }
+
+    a {
+      @media screen and (max-width: 1150px) {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+#resto {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+.header-text {
+  display: block;
+  text-align: center;
+
+  .header-text-content {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pre-title {
+    @include pre-title;
+    font-size: 4rem;
+  }
+  h1 {
+    @include title;
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 8px;
+    align-items: center;
+    margin-bottom: 30px;
+    @media screen and (max-width: 700px) {
+      font-size: 3rem;
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  p {
+    text-transform: uppercase;
+    color: $colorwhite;
+    font-family: $fontRoboto-light;
+    letter-spacing: 8px;
+    font-size: 0.9rem;
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,203 @@
+//-------------Recup time -------------------------
+let date = new Date();
+// -------------------------------------------------
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+//------------Initilaisation du canvas------------
+
+let canvasWidthAndHeight = 1000;
+let mapZoomLevel = 15;
+if (window.innerWidth < 600) {
+  canvasWidthAndHeight = 500;
+  mapZoomLevel = 14;
+}
+
+canvasContainer.innerHTML = `<canvas
+id="canvas"
+width="${canvasWidthAndHeight}"
+height="${canvasWidthAndHeight}"
+style="width: 100%; height: auto"
+></canvas><div id="map" style="width: 100%"></div>`;
+
+//----------------------------------------------------------------
+
+const choiceLocations = document.getElementsByClassName("choiceLocation");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let latitude = 48.37;
+let longitude = -4.765;
+let meteoData = [];
+let meteoDataMarine = [];
+let hourSelect = date.getHours();
+let locationId = 0;
+
+//------------Initilaisation de la carte------------
+
+displayMap(latitude, longitude);
+
+//Click event parametres
+
+for (let i = 0; i < choiceLocations.length; i++) {
+  choiceLocations[i].addEventListener("click", () => {
+    function maLocation(lieu) {
+      return lieu.name === choiceLocations[i].id;
+    }
+    locationId = i;
+    let result = locationData.find(maLocation);
+    latitude = result.LocateX;
+    longitude = result.LocateY;
+    recupData();
+    displayMap(latitude, longitude, "STREETS");
+    return latitude, longitude, locationId;
+  });
+}
+
+nextHour.addEventListener("click", () => {
+  if (hourSelect < 96) {
+    hourSelect++;
+    meteoDataDisplay();
+  }
+});
+previousHour.addEventListener("click", () => {
+  if (hourSelect > 0) {
+    hourSelect--;
+    meteoDataDisplay();
+  }
+});
+
+satelliteView.addEventListener("click", () => {
+  displayMap(latitude, longitude, "SATELLITE");
+});
+streetView.addEventListener("click", () => {
+  displayMap(latitude, longitude, "STREETS");
+});
+
+// ------------function fetch location ---------------------------------
+async function recupDataLocation() {
+  await fetch("./Location.json")
+    .then((response) => response.json())
+    .then((data) => (locationData = data));
+  return locationData;
+}
+recupDataLocation();
+
+// ---------------------function fetch meteo data---------------------------
+async function recupData() {
+  await fetch(
+    "https://api.open-meteo.com/v1/meteofrance?latitude=" +
+      latitude +
+      "&longitude=" +
+      longitude +
+      "&hourly=temperature_2m,windspeed_10m,windgusts_10m,winddirection_10m&windspeed_unit=kn"
+  )
+    .then((response) => response.json())
+    .then((data) => (meteoData = data));
+
+  await fetch(
+    "https://marine-api.open-meteo.com/v1/marine?latitude=" +
+      latitude +
+      "&longitude=" +
+      longitude +
+      "&hourly=wave_height,wave_direction,wave_period&length_unit=metric"
+  )
+    .then((response) => response.json())
+    .then((data) => (meteoDataMarine = data));
+
+  meteoDataDisplay();
+}
+
+// -------------------------function display map-----------------------------------
+
+function displayMap(latitude, longitude, modelViewMap) {
+  maptilersdk.config.apiKey = "OvBRSxpI8Y6ygIO2ph5A";
+  const map = new maptilersdk.Map({
+    container: "map", // container's id or the HTML element to render the map
+    style: maptilersdk.MapStyle[modelViewMap],
+    center: [longitude, latitude], // starting position [lng, lat]
+    zoom: mapZoomLevel, // starting zoom
+  });
+}
+
+// --------------------------function display meteo data---------------------------
+function meteoDataDisplay() {
+  dateContainer.innerHTML = `<h3>Date</h3><p>${meteoData.hourly.time[
+    hourSelect
+  ].slice(0, 10)}</p>`;
+  hourContainer.innerHTML = `<h3>Heure</h3><p>${meteoData.hourly.time[
+    hourSelect
+  ].slice(11, 16)}</p>`;
+  temperature.innerHTML = `<h3>Temperature</h3><p>${meteoData.hourly.temperature_2m[hourSelect]}  ${meteoData.hourly_units.temperature_2m}</p>`;
+  windspeed.innerHTML = `<h3>Vitesse du vent</h3><p>${meteoData.hourly.windspeed_10m[hourSelect]} ${meteoData.hourly_units.windspeed_10m}</p>`;
+  windgust.innerHTML = `<h3>Rafale</h3><p>${meteoData.hourly.windgusts_10m[hourSelect]} ${meteoData.hourly_units.windgusts_10m}</p>`;
+  winddirection.innerHTML = `<h3>Direction du vent</h3><p>${meteoData.hourly.winddirection_10m[hourSelect]} ${meteoData.hourly_units.winddirection_10m}</p>`;
+  waveHeight.innerHTML = `<h3>Hauteur de la houle</h3><p>${meteoDataMarine.hourly.wave_height[hourSelect]} ${meteoDataMarine.hourly_units.wave_height}</p>`;
+  waveDirection.innerHTML = `<h3>Direction de la houle</h3><p>${meteoDataMarine.hourly.wave_direction[hourSelect]} ${meteoDataMarine.hourly_units.wave_direction}</p>`;
+  wavePeriod.innerHTML = `<h3>Periode de houle</h3><p>${meteoDataMarine.hourly.wave_period[hourSelect]} ${meteoDataMarine.hourly_units.wave_period}</p>`;
+
+  let angle = meteoData.hourly.winddirection_10m[hourSelect]; // Degree
+  // let angle = 180;  // ---> for test
+  //----------------------------------display Alert wind Direction--------------------------------------
+
+  console.log(locationData[locationId]);
+  console.log(locationData[locationId].orientationBeach);
+  console.log(locationData[locationId].orientationBeach + 180);
+
+  console.log(angle);
+  console.log(angle > locationData[locationId].orientationBeach);
+  console.log(angle < locationData[locationId].orientationBeach + 180);
+
+  alertWindDirection.innerHTML = "";
+  winddirection.style.backgroundColor = "";
+  if (
+    angle > locationData[locationId].orientationBeach &&
+    angle < locationData[locationId].orientationBeach + 180
+  ) {
+    winddirection.style.backgroundColor = "red";
+    alertWindDirection.innerHTML = `<div class ="alertWindDirectionBox"><h2>ATTENTION</h2><p>Pensez à verifier l'orientation du vent</div></p>`;
+  }
+
+  // -------------------------- display canvas wind direction----------------------------------------------------------
+
+  let axeX;
+  let axeY;
+  let axeXPrime;
+  let axeYPrime;
+  let axeXArrow;
+  let axeYArrow;
+  let length = 75;
+  let lengthArrow = 10;
+
+  ctx.clearRect(0, 0, 1000, 1000);
+
+  // ctx.drawImage(imgFond, 0, 0, 1000, 1000);
+
+  for (x = 0; x <= 1000; x += 50) {
+    for (y = 0; y <= 1000; y += 50) {
+      axeX = x + Math.random() * 50;
+      axeY = y + Math.random() * 50;
+      // axeX = x;
+      // axeY = y;
+
+      axeXPrime = axeX + Math.cos((Math.PI * (angle + -90)) / 180) * length;
+      axeYPrime = axeY + Math.sin((Math.PI * (angle + -90)) / 180) * length;
+      axeXArrow =
+        axeX + Math.cos((Math.PI * (angle + -70)) / 180) * lengthArrow;
+      axeYArrow =
+        axeY + Math.sin((Math.PI * (angle + -70)) / 180) * lengthArrow;
+
+      // ctx.fillStyle = "rgb(0,0,0)";
+      // ctx.fillRect(axeX - 1.5, axeY - 1.5, 3, 3);
+
+      ctx.beginPath();
+      ctx.moveTo(axeX, axeY);
+      ctx.lineTo(axeXPrime, axeYPrime);
+      ctx.moveTo(axeX, axeY);
+      ctx.lineTo(axeXArrow, axeYArrow);
+
+      ctx.stroke();
+    }
+  }
+}
+
+window.addEventListener("load", recupData());

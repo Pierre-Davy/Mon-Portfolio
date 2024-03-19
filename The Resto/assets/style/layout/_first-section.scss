@@ -1,0 +1,66 @@
+.first-section {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  background: $colorwhite;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+
+  .left-part-container {
+    width: 95%;
+    height: 90%;
+    border: 1px dashed $colorgold;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .left-part {
+      text-align: center;
+    }
+
+    .pre-title {
+      @include pre-title;
+      font-size: 2.5rem;
+    }
+    .title {
+      @include title;
+      color: black;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    img {
+      margin-bottom: 15px;
+    }
+    p {
+      margin: 0 5px;
+    }
+    #russel-pic {
+      border-radius: 150px;
+      width: 15%;
+      margin-top: 15px;
+    }
+    #russel-text {
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    #russel-profession {
+      text-transform: uppercase;
+      color: grey;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+  }
+
+  .right-part-container {
+    background: url(../img/store-01.jpg) center/cover;
+    width: 100%;
+    height: 100%;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+}

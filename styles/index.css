@@ -1,0 +1,532 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "InstrumentSerif";
+  src: url(../assets/fonts/InstrumentSerif-Italic.ttf);
+}
+body {
+  background: rgb(15, 15, 15);
+  color: beige;
+}
+
+nav #side-bar {
+  position: absolute;
+  width: 370px;
+  background: rgba(255, 166, 0, 0.3);
+  top: 0;
+  left: -370px;
+  border-radius: 0 0 10px 0;
+  transition: 0.5s ease-out;
+  z-index: 4;
+}
+nav #side-bar:hover {
+  background: rgb(206, 134, 0);
+}
+@media screen and (max-height: 500px) {
+  nav #side-bar {
+    width: 90%;
+    left: -90%;
+  }
+}
+@media screen and (max-width: 500px) {
+  nav #side-bar {
+    width: 85%;
+    left: -85%;
+  }
+}
+@media screen and (min-width: 900px) {
+  nav #side-bar {
+    display: none;
+  }
+}
+nav .toggle-btn {
+  position: absolute;
+  top: 30px;
+  left: 390px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+@media screen and (max-height: 500px) {
+  nav .toggle-btn {
+    left: 102%;
+  }
+}
+@media screen and (max-width: 500px) {
+  nav .toggle-btn {
+    left: 102%;
+  }
+}
+nav .toggle-btn span {
+  width: 50px;
+  height: 5px;
+  border-radius: 5px;
+  background: rgba(255, 166, 0, 0.5);
+  display: block;
+  margin-top: 4px;
+  transition: 0.3s ease;
+}
+nav .active span {
+  position: absolute;
+}
+nav .active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+nav .active span:nth-child(2) {
+  opacity: 0;
+}
+nav .active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+nav #side-bar.active {
+  left: 0;
+}
+nav .propos h3 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  text-decoration: underline;
+  padding: 15px;
+}
+nav .lienLogo h4 {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px;
+  text-transform: uppercase;
+  color: beige;
+}
+nav .borderLogo {
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 0;
+  border-top: 1px solid grey;
+  cursor: pointer;
+  opacity: 0.8;
+}
+nav .borderLogo:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+nav .borderLogo:hover h4 {
+  color: black;
+}
+nav .logo {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+@media screen and (max-height: 500px) {
+  nav .logo {
+    opacity: 0;
+  }
+}
+nav a {
+  text-decoration: none;
+}
+@media screen and (max-width: 550px) {
+  nav a {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  nav a {
+    font-size: 0.6rem;
+  }
+}
+
+header {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  overflow: hidden;
+}
+header #textureBg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+header .header-box {
+  padding-top: 7%;
+  height: 100%;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 10% 55% 35%;
+  grid-template-areas: "a b1 c" "a b2 c" "a b3 c";
+}
+header .header-box #a {
+  grid-area: a;
+}
+header .header-box #b1 {
+  grid-area: b1;
+}
+header .header-box #b2 {
+  grid-area: b2;
+}
+header .header-box #b3 {
+  grid-area: b3;
+}
+header .header-box #photoProfil {
+  grid-area: c;
+}
+@media screen and (max-width: 900px) {
+  header .header-box {
+    display: block;
+    padding-top: 20%;
+  }
+}
+@media screen and (max-width: 600px) {
+  header .header-box {
+    display: block;
+    padding-top: 15%;
+  }
+}
+@media screen and (max-height: 500px) {
+  header .header-box {
+    display: block;
+    padding-top: 0;
+  }
+}
+header .header-box h1 {
+  padding-top: 7%;
+  font-size: 3.5rem;
+  margin: 0 0 50px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, orange, orangered);
+}
+@media screen and (max-width: 600px) {
+  header .header-box h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-height: 500px) {
+  header .header-box h1 {
+    font-size: 2rem;
+  }
+}
+header .header-box h2 {
+  font-family: "InstrumentSerif";
+  font-weight: 100;
+  letter-spacing: 5px;
+  text-shadow: 2px 2px 5px beige;
+  font-size: 2rem;
+  margin: 0 0 50px;
+}
+header .header-box h3 {
+  font-size: 2rem;
+  margin: 0 0 50px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, orange, orangered);
+}
+@media screen and (max-width: 600px) {
+  header .header-box h3 {
+    font-size: 1.5rem;
+  }
+}
+header .textDynamic {
+  display: flex;
+  justify-content: center;
+}
+header .textDynamic #target {
+  display: flex;
+  color: orangered;
+  margin-left: 0.5rem;
+  position: relative;
+}
+header .textDynamic #target::after {
+  content: "";
+  position: absolute;
+  height: 2rem;
+  width: 2px;
+  background: orangered;
+  top: 7px;
+  transform: translateY(-4px);
+  right: -5px;
+  animation: anim 0.8s linear infinite;
+}
+@keyframes anim {
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+header #photoProfil {
+  width: 20%;
+  min-width: 300px;
+  border-radius: 500px;
+  opacity: 0.9;
+  margin: 0 0;
+  filter: grayscale(100%);
+  box-shadow: 0px 0px 10px beige;
+}
+header #photoProfil:hover {
+  transition: 3s;
+  filter: grayscale(50%);
+}
+@media screen and (max-width: 900px) {
+  header #photoProfil {
+    display: none;
+  }
+}
+header .lienLogo {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+  position: absolute;
+  bottom: 0px;
+  height: 20%;
+}
+header .lienLogo h4 {
+  text-align: center;
+  padding: 10px;
+  text-transform: uppercase;
+  color: beige;
+}
+@media screen and (max-width: 900px) {
+  header .lienLogo {
+    display: none;
+  }
+}
+header .borderLogo {
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  width: 35%;
+  height: 75%;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  cursor: pointer;
+  opacity: 0.8;
+}
+header .borderLogo:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+@media screen and (max-width: 1550px) {
+  header .borderLogo {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1380px) {
+  header .borderLogo {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 1180px) {
+  header .borderLogo {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  header .borderLogo {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 840px) {
+  header .borderLogo {
+    width: 75%;
+  }
+}
+@media screen and (max-height: 500px) {
+  header .borderLogo {
+    height: 40%;
+  }
+}
+header .borderLogo:hover h4 {
+  color: black;
+}
+header .logo {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+@media screen and (max-height: 500px) {
+  header .logo {
+    opacity: 0;
+  }
+}
+header a {
+  text-decoration: none;
+}
+@media screen and (max-width: 550px) {
+  header a {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  header a {
+    font-size: 0.6rem;
+  }
+}
+
+#accueil::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background-image: url(../assets/images/Coucher_de_soleil_au_Phare_du_Petit_Minou.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  z-index: -1;
+}
+
+.section {
+  min-height: 100vh;
+  display: block;
+  position: relative;
+}
+.section .fleche {
+  transform: rotate(180deg);
+  width: 100%;
+  min-width: 70px;
+}
+.section .flecheRetour {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 10%;
+  top: 50px;
+  opacity: 0.5;
+  color: beige;
+  width: 6%;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transform: translate(-50%);
+}
+.section .flecheRetour:hover {
+  opacity: 1;
+}
+@media screen and (max-width: 700px) {
+  .section .flecheRetour {
+    top: 100%;
+    left: 40%;
+    margin: 20px;
+    padding: 20px;
+    transform: translate(-50%);
+  }
+}
+.section .flecheRetourD {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 10%;
+  top: 50px;
+  opacity: 0.5;
+  color: beige;
+  width: 6%;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.section .flecheRetourD:hover {
+  opacity: 1;
+}
+@media screen and (max-width: 700px) {
+  .section .flecheRetourD {
+    top: 100%;
+    left: 40%;
+    margin: 20px;
+    padding: 20px;
+    transform: translate(-50%);
+  }
+}
+.section .logo {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+}
+.section h2 {
+  padding-top: 3%;
+  display: block;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-align: center;
+  color: orange;
+  margin-bottom: 50px;
+}
+.section .container {
+  display: block;
+  margin-bottom: 3vh;
+  padding: 10px;
+  width: 55%;
+  min-height: 25vh;
+  border: 1px solid orange;
+  border-radius: 10px;
+}
+@media screen and (max-width: 700px) {
+  .section .container {
+    width: 90%;
+  }
+}
+.section .box1 {
+  margin-left: 40%;
+}
+@media screen and (max-width: 700px) {
+  .section .box1 {
+    margin: 20px auto 0;
+  }
+}
+.section .box2 {
+  margin-right: 40%;
+  margin-left: 5%;
+}
+@media screen and (max-width: 700px) {
+  .section .box2 {
+    margin: 20px auto 0;
+  }
+}
+.section .box3 {
+  margin-left: 40%;
+}
+@media screen and (max-width: 700px) {
+  .section .box3 {
+    margin: 20px auto 0;
+  }
+}
+.section .sectionContains p {
+  padding-top: 10px;
+  padding-left: 10px;
+  letter-spacing: 1px;
+}
+.section .sectionContains img {
+  width: 40%;
+  min-width: 250px;
+  margin: 5px;
+  float: right;
+  border-radius: 5px;
+  filter: grayscale(75%);
+  transform: scale(0.9);
+}
+.section .sectionContains img:hover {
+  transform: scale(1);
+  filter: grayscale(0);
+  border: 1px solid beige;
+}
+@media screen and (max-width: 450px) {
+  .section .sectionContains img {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+.section .sectionContains .screenGame {
+  width: 35%;
+}/*# sourceMappingURL=index.css.map */

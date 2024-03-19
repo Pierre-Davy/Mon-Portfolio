@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "lobster";
+  src: url("./assets/font/Lobster-Regular.ttf");
+}
+
+hr {
+  margin: 0 auto;
+}
+
+body {
+  background-image: url("./assets/background.JPG");
+  background-size: cover;
+  background-position: center;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(240, 248, 255, 0.541);
+  margin-bottom: 50px;
+}
+
+.header h1 {
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-family: "lobster";
+
+  text-align: center;
+  text-decoration: underline;
+}
+.header img {
+  width: clamp(100px, 50%, 250px);
+}
+
+h2 {
+  color: aliceblue;
+  font-size: 2rem;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  margin: 10px 20px;
+  user-select: none;
+}
+
+#buttonViewMap {
+  text-align: center;
+  margin: 20px;
+}
+
+#nextHour {
+  background-color: aqua;
+}
+#previousHour {
+  background-color: aqua;
+}
+.meteoDescription {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#alertWindDirection {
+  margin: 0 auto;
+
+  text-align: center;
+  color: red;
+}
+#alertWindDirection h2 {
+  color: red;
+}
+
+.alertWindDirectionBox {
+  background-color: rgba(240, 248, 255, 0.58);
+  color: red;
+  margin: 0 auto;
+  padding: 5px;
+  width: fit-content;
+  border: 1px solid red;
+  margin-bottom: 20px;
+}
+.containid {
+  background-color: gainsboro;
+  width: 150px;
+  height: auto;
+  border: 1px solid black;
+  text-align: center;
+  margin: 20px;
+}
+
+#canvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  min-height: 70vh;
+  border: 1px solid black;
+}
+
+#canvasContainer {
+  min-height: 70vh;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#map {
+  min-height: 70vh;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.maplibregl-control-container {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #canvasContainer {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 450px) {
+  button {
+    width: 100px;
+    font-size: 0.6rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .containid {
+    width: 80px;
+    height: 40px;
+    font-size: 0.6rem;
+  }
+  #buttonViewMap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #previousHour,
+  #nextHour {
+    width: 100px;
+    font-size: 0.5rem;
+    margin: 0 5px;
+  }
+  #satelliteView,
+  #streetView {
+    width: 50px;
+    font-size: 0.5rem;
+    margin: 0 5px;
+  }
+}

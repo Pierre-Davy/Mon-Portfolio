@@ -1,0 +1,226 @@
+header {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  overflow: hidden;
+
+  #textureBg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+  }
+
+  .header-box {
+    padding-top: 7%;
+    height: 100%;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 10% 55% 35%;
+    grid-template-areas:
+      "a b1 c"
+      "a b2 c"
+      "a b3 c";
+    #a {
+      grid-area: a;
+    }
+    #b1 {
+      grid-area: b1;
+    }
+    #b2 {
+      grid-area: b2;
+    }
+    #b3 {
+      grid-area: b3;
+    }
+    #photoProfil {
+      grid-area: c;
+    }
+    @media screen and (max-width: 900px) {
+      display: block;
+      padding-top: 20%;
+    }
+    @media screen and (max-width: 600px) {
+      display: block;
+      padding-top: 15%;
+    }
+    @media screen and (max-height: 500px) {
+      display: block;
+      padding-top: 0;
+    }
+    h1 {
+      padding-top: 7%;
+      font-size: 3.5rem;
+      margin: 0 0 50px;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(45deg, $color1, $color4);
+      @media screen and (max-width: 600px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-height: 500px) {
+        font-size: 2rem;
+      }
+    }
+
+    h2 {
+      font-family: "InstrumentSerif";
+      font-weight: 100;
+      letter-spacing: 5px;
+      text-shadow: 2px 2px 5px $color2;
+      font-size: 2rem;
+      margin: 0 0 50px;
+    }
+    h3 {
+      font-size: 2rem;
+      margin: 0 0 50px;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(45deg, $color1, $color4);
+      @media screen and (max-width: 600px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .textDynamic {
+    display: flex;
+    justify-content: center;
+    #target {
+      display: flex;
+      color: $color4;
+      margin-left: 0.5rem;
+      position: relative;
+    }
+    #target::after {
+      content: "";
+      position: absolute;
+      height: 2rem;
+      width: 2px;
+      background: $color4;
+      top: 7px;
+      transform: translateY(-4px);
+      right: -5px;
+      animation: anim 0.8s linear infinite;
+    }
+    @keyframes anim {
+      50% {
+        opacity: 0.1;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  #photoProfil {
+    width: 20%;
+
+    min-width: 300px;
+    border-radius: 500px;
+    opacity: 0.9;
+    margin: 0 0;
+    filter: grayscale(100%);
+    box-shadow: 0px 0px 10px $color2;
+
+    &:hover {
+      transition: 3s;
+      filter: grayscale(50%);
+    }
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .lienLogo {
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    position: absolute;
+    bottom: 0px;
+    height: 20%;
+    h4 {
+      text-align: center;
+      padding: 10px;
+      text-transform: uppercase;
+      color: $color2;
+    }
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  .borderLogo {
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    width: 35%;
+    height: 75%;
+    min-height: fit-content;
+    cursor: pointer;
+    opacity: 0.8;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    @media screen and (max-width: 1550px) {
+      width: 40%;
+    }
+    @media screen and (max-width: 1380px) {
+      width: 45%;
+    }
+    @media screen and (max-width: 1180px) {
+      width: 55%;
+    }
+    @media screen and (max-width: 1000px) {
+      width: 65%;
+    }
+    @media screen and (max-width: 840px) {
+      width: 75%;
+    }
+    @media screen and (max-height: 500px) {
+      height: 40%;
+    }
+  }
+
+  .borderLogo:hover h4 {
+    color: black;
+  }
+
+  .logo {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    @media screen and (max-height: 500px) {
+      opacity: 0;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    @media screen and (max-width: 550px) {
+      font-size: 0.8rem;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+#accueil::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background-image: url(../assets/images/Coucher_de_soleil_au_Phare_du_Petit_Minou.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  z-index: -1;
+}

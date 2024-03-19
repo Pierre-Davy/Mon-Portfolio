@@ -1,0 +1,147 @@
+.section {
+  min-height: 100vh;
+  display: block;
+  position: relative;
+
+  .fleche {
+    transform: rotate(180deg);
+    width: 100%;
+    min-width: 70px;
+  }
+
+  .flecheRetour {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 10%;
+    top: 50px;
+    opacity: 0.5;
+    color: $color2;
+    width: 6%;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transform: translate(-50%);
+
+    &:hover {
+      opacity: 1;
+    }
+    @media screen and (max-width: 700px) {
+      top: 100%;
+      left: 40%;
+      margin: 20px;
+      padding: 20px;
+      transform: translate(-50%);
+    }
+  }
+  .flecheRetourD {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10%;
+    top: 50px;
+    opacity: 0.5;
+    color: $color2;
+    width: 6%;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 1;
+    }
+    @media screen and (max-width: 700px) {
+      top: 100%;
+      left: 40%;
+      margin: 20px;
+      padding: 20px;
+      transform: translate(-50%);
+    }
+  }
+
+  .logo {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+  }
+
+  h2 {
+    padding-top: 3%;
+    display: block;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color1;
+    margin-bottom: 50px;
+  }
+
+  .container {
+    display: block;
+    margin-bottom: 3vh;
+    padding: 10px;
+    width: 55%;
+    min-height: 25vh;
+    border: 1px solid $color1;
+    border-radius: 10px;
+    @media screen and (max-width: 700px) {
+      width: 90%;
+    }
+  }
+  .box1 {
+    margin-left: 40%;
+    @media screen and (max-width: 700px) {
+      margin: 20px auto 0;
+    }
+  }
+  .box2 {
+    margin-right: 40%;
+    margin-left: 5%;
+    @media screen and (max-width: 700px) {
+      margin: 20px auto 0;
+    }
+  }
+  .box3 {
+    margin-left: 40%;
+    @media screen and (max-width: 700px) {
+      margin: 20px auto 0;
+    }
+  }
+
+  .sectionContains {
+    p {
+      padding-top: 10px;
+      padding-left: 10px;
+      letter-spacing: 1px;
+    }
+
+    img {
+      width: 40%;
+      min-width: 250px;
+      margin: 5px;
+      float: right;
+      border-radius: 5px;
+      filter: grayscale(75%);
+      transform: scale(0.9);
+
+      &:hover {
+        transform: scale(1);
+        filter: grayscale(0);
+        border: 1px solid $color2;
+      }
+
+      @media screen and (max-width: 450px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .screenGame {
+      width: 35%;
+    }
+  }
+}

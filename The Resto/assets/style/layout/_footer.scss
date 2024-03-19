@@ -1,0 +1,147 @@
+footer {
+  height: 120vh;
+  display: grid;
+  grid-template-rows: 30% 40% 30%;
+  position: relative;
+
+  .footer-text {
+    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $colorwhite;
+    width: 60%;
+    height: 30%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    @media screen and (max-width: 1000px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 400px) {
+      height: 40%;
+    }
+
+    p {
+      text-align: center;
+      color: $colorbackground;
+      @media screen and (max-width: 700px) {
+        margin: 50px 20px 30px;
+        @media screen and (max-width: 400px) {
+          margin: 20px 10px 10px;
+        }
+      }
+    }
+    span {
+      margin-bottom: 20px;
+    }
+    .namefooter {
+      font-family: $fontRoboto-light;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .ceofooter {
+      color: $colorgold;
+      font-family: $fontRoboto-light;
+    }
+    img {
+      border-radius: 100px;
+      width: 80px;
+      position: absolute;
+      top: -50px;
+    }
+  }
+
+  .carto {
+    background: url(../img/gmap.jpg) center/cover;
+  }
+  .footer-final {
+    background: url(../img/bg-footer.jpg) center/cover;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @media screen and (max-width: 900px) {
+      background: $colorbackground;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .petitmot {
+      .align-text {
+        width: 60%;
+        height: 60%;
+        margin: 40px auto auto 30%;
+        @media screen and (max-width: 900px) {
+          display: none;
+        }
+        h3 {
+          @include pre-title;
+          font-size: 3rem;
+          font-weight: normal;
+        }
+        p {
+          font-family: $fontRoboto-light;
+          line-height: 40px;
+          color: $colorwhite;
+        }
+      }
+    }
+    .newsletter {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      color: $colorwhite;
+      .news {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 50px;
+        @media screen and (max-width: 400px) {
+          margin-left: 20px;
+        }
+
+        h3 {
+          text-transform: uppercase;
+          font-family: $fontRoboto-light;
+        }
+
+        input {
+          background: none;
+          color: $colorwhite;
+          border: 1px solid grey;
+          padding: 10px 30px;
+          margin-top: 15px;
+          &:focus {
+            background: $colorwhite;
+            color: $colorbackground;
+          }
+        }
+      }
+      .follow {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 50px;
+        @media screen and (max-width: 400px) {
+          margin-left: 20px;
+        }
+        h3 {
+          text-transform: uppercase;
+          font-family: $fontRoboto-light;
+        }
+        i {
+          margin-left: 30px;
+          color: grey;
+          &:hover {
+            transform: scale(1.2);
+            color: $colorwhite;
+          }
+          &:active {
+            transition: 0.1s ease;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}

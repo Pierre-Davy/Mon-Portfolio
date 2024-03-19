@@ -1,0 +1,119 @@
+#reservation {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  width: 70%;
+  margin: 100px auto;
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+
+  font-family: $fontRoboto-light;
+  .pre-title {
+    @include pre-title;
+    font-size: 3rem;
+  }
+  .title {
+    @include title;
+    font-size: 2rem;
+  }
+  img {
+    margin: 30px 0 40px;
+  }
+
+  .reservation-left-container {
+    min-height: 500px;
+    background: black;
+    color: $colorwhite;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .reservation-left {
+      border: 1px dashed $colorwhite;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height: auto;
+      margin: 10px;
+
+      .open-day {
+        text-transform: uppercase;
+        color: $colorgold;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        margin-bottom: 5%;
+      }
+      p {
+        letter-spacing: 1px;
+        margin-bottom: 10%;
+      }
+      .open-tel {
+        font-family: $fontRoboto;
+        color: $colorgold;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .reservation-right-container {
+    max-width: 670px;
+    background: $colorwhite;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+      color: black;
+    }
+
+    .array {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      width: 100%;
+      margin-bottom: 50px;
+
+      select,
+      input {
+        width: 150px;
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        background: none;
+        border-bottom: 1px solid rgb(184, 179, 179);
+      }
+
+      select,
+      input[type="time"],
+      input[type="date"]:hover {
+        cursor: pointer;
+      }
+    }
+
+    input[type="submit"] {
+      border: 1px solid black;
+      border-radius: 100px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-family: $fontRoboto;
+      font-size: 0.9rem;
+      background: $colorbackground;
+      color: $colorwhite;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transition: 0.1s ease;
+        transform: scale(1);
+      }
+    }
+  }
+}

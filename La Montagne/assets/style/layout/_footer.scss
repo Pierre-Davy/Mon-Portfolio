@@ -1,0 +1,121 @@
+footer {
+  background: $grey2;
+  min-height: 640px;
+  width: 85%;
+  margin: 0 auto 70px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+  @media screen and (max-width: 420px) {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  form {
+    display: grid;
+    gap: 18px;
+    padding: 60px 50px;
+    grid-template-rows: 18px 45px 18px 45px 18px 200px 1fr;
+
+    border-right: 1px solid $grey1;
+
+    @media screen and (max-width: 900px) {
+      border-right: none;
+    }
+
+    label {
+      display: flex;
+      align-items: flex-end;
+      font-size: 0.7rem;
+      @include title;
+      color: $grey3;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      background: none;
+      border: 1px solid $grey1;
+      border-radius: 4px;
+      resize: none;
+    }
+    .submit-container {
+      display: flex;
+      align-items: flex-end;
+
+      .btn {
+        color: $grey3;
+        border: 2px solid $grey3;
+      }
+    }
+  }
+  .infos-contact {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+
+    div:nth-child(1) {
+      @media screen and (max-width: 900px) {
+        border-top: 1px solid $grey1;
+        padding-bottom: 20px;
+      }
+    }
+
+    div {
+      border-bottom: 1px solid $grey1;
+      display: grid;
+      grid-template-columns: 30% 70%;
+      align-items: center;
+
+      @media screen and (max-width: 900px) {
+        grid-template-columns: 45% 55%;
+      }
+
+      h3 {
+        @include title;
+        font-size: 0.7rem;
+        padding: 40px;
+        text-align: left;
+        color: $grey3;
+      }
+
+      p {
+        font-size: 0.8rem;
+        line-height: 26px;
+        text-align: left;
+        color: grey;
+      }
+    }
+    .social {
+      @media screen and (max-width: 370px) {
+        display: block;
+        margin: 0 auto 50px;
+        border: none;
+        h3 {
+          text-align: center;
+        }
+      }
+
+      ul {
+        display: flex;
+
+        li {
+          border: 1px solid $grey1;
+          border-radius: 150px;
+          height: 40px;
+          width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 12px;
+
+          a {
+            font-size: 0.9rem;
+            color: $black1;
+          }
+        }
+      }
+    }
+  }
+}
